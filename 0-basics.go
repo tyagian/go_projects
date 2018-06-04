@@ -1,4 +1,4 @@
-// basic tutorial by Derek Banas
+// basic tutorial, Golang -101
 /*  multi-line comment
 1. go run: go run
 2. godoc fmt println
