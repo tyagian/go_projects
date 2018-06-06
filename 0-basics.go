@@ -151,20 +151,12 @@
 	//fmt.Println(strings.Index(sampString, "lo"))
 	//fmt.Println(strings.Count(sampString, "l"))
 	//fmt.Println(strings.Replace(sampString, "l","x",3))
+	}
 
-}
-*/
 
-package main
+	#### Reading file:
 
-import (
-	"fmt"
-	"io/ioutil"
-	"log"
-	"os"
-)
-
-func main() {
+	func main() {
 
 	file, err := os.Create("samp.txt")
 	if err != nil {
@@ -178,17 +170,107 @@ func main() {
 	}
 	readString := string(stream)
 	fmt.Println(readString)
-	//csvString := "1,2,3,4,5,6"
-	//fmt.Println(strings.Split(csvString, ","))
-	//listOfLetters := []string{"c","a","b"}
-	//sort.Strings(listOfLetters)
-	//fmt.Println("Letters:", listOfLetters)
-	//listOfNums := strings.Join([]string{"3","2","1"}, ", ");
-	//fmt.Println(listOfNums)
-	//sampString := "Hello World"
-	//fmt.Println(strings.Contains(sampString, "lo"))
-	//fmt.Println(strings.Index(sampString, "lo"))
-	//fmt.Println(strings.Count(sampString, "l"))
-	//fmt.Println(strings.Replace(sampString, "l","x",3))
+	}
+
+	### Create a handler function
+
+	func main() {
+		http.HandleFunc("/", handler)
+		http.HandleFunc("/earth", handler2)
+
+		http.ListenAndServe(":8080", nil)
+	}
+
+	// respnse writer: assemble the server response and write it to the client
+	// http request: hold the client request and output to the client screen
+	func handler(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Helllo World\n")
+	}
+
+	func handler2(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Helllo Earth\n")
+	}
+
+	## Go routines::
+
+	var pizzaNum = 0
+var pizzaName = ""
+
+// defining channel and convert into string
+func makeDough(stringChan chan string) {
+	pizzaNum++
+	pizzaNum = "Pizza #" + strconv.Itoa(pizzaNum)
+	fmt.Println("make dough and send for sauce")
+	stringChan <- pizzaName
+	time.Sleep(time.Millisecond * 10)
+}
+
+func addSauce(stringChan chan string) {
+	pizza := <-stringChan
+	pizzaNum = "Pizza #" + strconv.Itoa(pizzaNum)
+	fmt.Println("Add sauce and send", pizza, "for toppings")
+	stringChan <- pizzaName
+	time.Sleep(time.Millisecond * 10)
+}
+
+func addToppings(stringChan chan string) {
+	pizza := <-stringChan
+	fmt.Println("Add toppings to", pizza, "and ship")
+}
+func main() {
+	stringChan := make(chan string)
+
+	for i := 0; i < 3; i++ {
+		go makeDough(stringChan)
+		go addSauce(stringChan)
+		go addToppings(stringChan)
+		time.Sleep(time.Millisecond * 5000)
+	}
+
+}
+
+
+*/
+package main
+
+import (
+	"fmt"
+	"strconv"
+	"time"
+)
+
+var pizzaNum = 0
+var pizzaName = ""
+
+// defining channel and convert into string
+func makeDough(stringChan chan string) {
+	pizzaNum++
+	pizzaNum = "Pizza #" + strconv.Itoa(pizzaNum)
+	fmt.Println("make dough and send for sauce")
+	stringChan <- pizzaName
+	time.Sleep(time.Millisecond * 10)
+}
+
+func addSauce(stringChan chan string) {
+	pizza := <-stringChan
+	pizzaNum = "Pizza #" + strconv.Itoa(pizzaNum)
+	fmt.Println("Add sauce and send", pizza, "for toppings")
+	stringChan <- pizzaName
+	time.Sleep(time.Millisecond * 10)
+}
+
+func addToppings(stringChan chan string) {
+	pizza := <-stringChan
+	fmt.Println("Add toppings to", pizza, "and ship")
+}
+func main() {
+	stringChan := make(chan string)
+
+	for i := 0; i < 3; i++ {
+		go makeDough(stringChan)
+		go addSauce(stringChan)
+		go addToppings(stringChan)
+		time.Sleep(time.Millisecond * 5000)
+	}
 
 }
