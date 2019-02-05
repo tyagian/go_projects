@@ -1,5 +1,5 @@
-# golang_snippets
-short go exercises and mini projects
+# Go Snippets
+# short go exercises and mini projects
 
 1 - Beginner exercises to set the foundations
 2 - REST API
