@@ -10,6 +10,7 @@ import (
 func main() {
 	client := http.DefaultClient
 	req, err := http.NewRequest("GET", "https://httpbin.org/get", nil) //http.Post("https://httpbin.org/post", "text/plain",
+	// nil because we are not sending any payload with the request
 	if err != nil {
 		log.Fatalln("Unable to create request")
 	}
