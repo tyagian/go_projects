@@ -5,12 +5,16 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
 )
 
 func main() {
-	resp, err := http.Post("https://httpbin.org/post", "text/plain",
-		strings.NewReader("this is the requested content"))
+	client := http.DefaultClient
+	req, err := http.NewRequest("GET", "https://httpbin.org/get", nil) //http.Post("https://httpbin.org/post", "text/plain",
+	if err != nil {
+		log.Fatalln("Unable to create request")
+	}
+	resp, err := client.Do(req)
+
 	if err != nil {
 		log.Fatalln("Unable to get response")
 	}
