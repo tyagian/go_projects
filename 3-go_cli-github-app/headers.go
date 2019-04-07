@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bytes"
-	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -14,15 +12,16 @@ func main() {
 	if err != nil {
 		log.Fatalln("Unable to get request")
 	}
-	buffer := &bytes.Buffer{}
-	enc := base64.NewEncoder(base64.URLEncoding, buffer)
-	enc.Write([]byte("user:password"))
-	enc.Close()
-	encodedCreds, err := buffer.ReadString('\n')
-	if err != nil && err.Error() != "EOF" {
-		log.Fatalln("Failed to read encoded buffer")
-	}
-	req.Header.Add("Authorization", fmt.Sprintf("Basic %s", encodedCreds))
+	req.SetBasicAuth("user", "password")
+	//buffer := &bytes.Buffer{}
+	//enc := base64.NewEncoder(base64.URLEncoding, buffer)
+	//enc.Write([]byte("user:password"))
+	//enc.Close()
+	//encodedCreds, err := buffer.ReadString('\n')
+	//if err != nil && err.Error() != "EOF" {
+	//	log.Fatalln("Failed to read encoded buffer")
+	//}
+	//req.Header.Add("Authorization", fmt.Sprintf("Basic %s", encodedCreds))
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Fatalln("Unable to read response")
