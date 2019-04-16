@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	req, err := http.NewRequest("GET", "https://httpbin.org/basic-auth/user/password", nil)
+	req, err := http.NewRequest("GET", "https://httpbin.org/basic-auth/user/passw0rd", nil)
 	if err != nil {
 		log.Fatalln("Unable to get request")
 	}
-	req.SetBasicAuth("user", "password")
+	req.SetBasicAuth("user", "passw0rd")
 	//buffer := &bytes.Buffer{}
 	//enc := base64.NewEncoder(base64.URLEncoding, buffer)
 	//enc.Write([]byte("user:password"))
