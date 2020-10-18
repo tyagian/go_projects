@@ -1,0 +1,11 @@
+1. Run go command: To get Go tools
+2. Put GO environment variable
+source ~/.profile
+GO111MODULE=auto
+GOBIN=/home/atyagi976/go/bin
+GOPATH=//home/atyagi976/go:/home/atyagi976/workspace
+
+3. How to make a new GO package
+4. Function init()
+5. Getters() and Setters()
+6. 
