@@ -1,9 +1,10 @@
 package dao
 
 import (
+	"GO_Mini_Projects/golang-microservice/src/webapp/errors"
 	"GO_Mini_Projects/golang-microservice/src/webapp/model"
-	"errors"
 	"fmt"
+	"net/http"
 )
 
 var (
@@ -20,6 +21,10 @@ func GetEmployee(empId int64) (*model.Employee, *errors.AppError) {
 	if employee := employees[empId]; employee != nil {
 		return employee, nil
 	}
-	return nil, errors.New(fmt.Sprintf("Employee %v was not found", empId))
-
+	//return nil, errors.New(fmt.Sprintf("Employee %v was not found", empId))
+	return nil, &errors.AppError{
+		Message:    fmt.Sprintf("Employee %v was not found", empId),
+		StatusCode: http.StatusNotFound,
+		Status:     "not_found",
+	}
 }
