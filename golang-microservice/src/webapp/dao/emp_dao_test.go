@@ -40,3 +40,15 @@ func TestGetEmployeeNoError(t *testing.T) {
 	// 	t.Error("Not accepted input for emp_id")
 	// }
 }
+
+/*
+Output:
+$ go test
+PASS
+ok      GO_Mini_Projects/golang-microservice/src/webapp/dao     0.218s
+
+$ go test -cover
+PASS
+coverage: 100.0% of statements
+ok      GO_Mini_Projects/golang-microservice/src/webapp/dao     1.361s
+*/
