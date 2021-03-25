@@ -7,10 +7,9 @@ import (
 )
 
 func main() {
-
+	// https://golang.org/pkg/net/http/
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		n, err := fmt.Fprintf(w, "This is about page")
-
+		n, err := fmt.Fprintf(w, "Homepage")
 		if err != nil {
 			fmt.Println(err)
 		}
