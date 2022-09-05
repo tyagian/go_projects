@@ -30,6 +30,8 @@ func main() {
 	for _, val := range qparams {
 		fmt.Println("Params is:", val)
 	}
+
+	// construct a web request
 	partsOfUrl := &url.URL{
 		Scheme:  "https",
 		Host:    "lco.dev",
