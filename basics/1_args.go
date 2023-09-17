@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	//var args []string
+	//var args []st ring
 	args := os.Args
 	if len(args) < 2 {
 		fmt.Printf("Usage: ./hello world argument \n")
