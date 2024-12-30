@@ -10,7 +10,7 @@ import (
 // https://api.openweathermap.org/data/3.0/onecall?lat=$latitude&lon=$longitude&appid=$APIKey'
 // http://api.weatherapi.com/v1/forecast.json?key=2471cf332dc76818d03ba8df3e4e338e&q=London&days=1&aqi=no&alerts=no
 
-// working: http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=be066ebcc20b35eb9d57a039558acb5c
+
 
 type Location struct {
 	//Location struct {
@@ -23,7 +23,7 @@ type Location struct {
 }
 
 func main() {
-	res, err := http.Get("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=2471cf332dc76818d03ba8df3e4e338e")
+	#res, err := http.Get("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=<id>")
 	if err != nil {
 		panic(err)
 	}
