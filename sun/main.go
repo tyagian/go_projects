@@ -8,7 +8,7 @@ import (
 )
 
 // https://api.openweathermap.org/data/3.0/onecall?lat=$latitude&lon=$longitude&appid=$APIKey'
-// http://api.weatherapi.com/v1/forecast.json?key=2471cf332dc76818d03ba8df3e4e338e&q=London&days=1&aqi=no&alerts=no
+// http://api.weatherapi.com/v1/forecast.json?key=<key>&q=London&days=1&aqi=no&alerts=no
 
 
 
